@@ -40,6 +40,7 @@ export const POST = async (request: NextRequest) => {
 
   const foundroomId = (<Database>DB).rooms.find((x) => x.roomId === roomId);
 
+
   if (!foundroomId) {
     return NextResponse.json(
       {
@@ -51,6 +52,7 @@ export const POST = async (request: NextRequest) => {
   }
 
   const messageId = nanoid();
+
 
   (<Database>DB).messages.push({
     roomId,
@@ -109,6 +111,7 @@ export const DELETE = async (request: NextRequest) => {
     );
   }
 
+  
   (<Database>DB).messages.splice(foundIndex, 1);
 
   writeDB();
