@@ -80,8 +80,7 @@ export const DELETE = async (request: NextRequest) => {
     );
   }
 
-
-  const { username, role} = <Payload>payload;
+  const {role} = <Payload>payload;
 
   readDB();
 
@@ -97,9 +96,9 @@ export const DELETE = async (request: NextRequest) => {
 
   const body = await request.json();
   const { messageId } = body;
+
   const foundIndex = (<Database>DB).messages.findIndex((x) => x.messageId === messageId);
 
-  
   if(foundIndex === -1){
     return NextResponse.json(
       {
